@@ -8,4 +8,7 @@ views = Blueprint('views', __name__)
 def home():
     return render_template('home.html', user=current_user)
 
-    
+@views.route('.add-ride')
+@login_required
+def add_ride():
+    return render_template('create_post.html', user=current_user)
