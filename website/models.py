@@ -9,6 +9,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(150))
     first_name = db.Column(db.String(150))
+    posts = db.relationship('Post')
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
