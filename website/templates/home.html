@@ -2,9 +2,11 @@
 {% block content%}
 <br />
 <h1 align="center">Rides</h1>
-<ul class="list-group list-group-flush" id="notes">
-    {% for note in user.notes %}
-    <li class="list-group-item">{{ note.data }}</li>
+<ul class="list-group list-group-flush" id="posts">
+    {% for post in user.posts %}
+    <li class="list-group-item">{{ user.first_name }}<br />{{ post.title }}<br />{{ post.content }}
+    
+    </li>
     {% endfor %}
 </ul>
 {% endblock %}
