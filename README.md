@@ -22,3 +22,7 @@ Run ```. venv/Scripts/activate```.
 ## Installing dependencies
 
 In the main directory, after entering the virtual environment, run ```pip install -r requirements.txt```.
+
+## Starting the website
+
+In the main directory, run ```python3 main.py``` and then go to the link that shows up on the terminal, which should be ```http://127.0.0.1:5000/```.
