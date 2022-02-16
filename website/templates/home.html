@@ -1,12 +1,28 @@
-{% extends "base.html" %} {% block title%}Rides{% endblock %}
-{% block content%}
+{% extends "base.html" %} {% block title%}Rides{% endblock %} {% block content%}
 <br />
 <h1 align="center">Rides</h1>
-<ul class="list-group list-group-flush" id="posts">
-    {% for post in user.posts %}
-    <li class="list-group-item">{{ user.first_name }}<br />{{ post.title }}<br />{{ post.content }}
-    
-    </li>
-    {% endfor %}
-</ul>
-{% endblock %}
+{% for post in user.posts %}
+
+<br />
+<div class="card">
+  <h5 class="card-header">{{ post.title }}</h5>
+  <div class="card-body">
+    <h5 class="card-title">{{ user.first_name }}</h5>
+    <p class="card-text"></p>
+    <button
+      class="btn btn-primary"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapseExample"
+      aria-expanded="false"
+      aria-controls="collapseExample"
+    >
+      More information
+    </button>
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body">{{ post.content }}</div>
+    </div>
+  </div>
+  <div class="card-footer">Contact info:</div>
+</div>
+{% endfor %} {% endblock %}
