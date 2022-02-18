@@ -6,7 +6,7 @@ import json
 
 views = Blueprint('views', __name__)
 
-@views.route('/')
+@views.route('/rides')
 @login_required
 def home():
     return render_template('home.html', user=current_user)
@@ -30,3 +30,11 @@ def add_ride():
             return redirect(url_for('views.home'))
     return render_template('create_post.html', user=current_user)
 
+@views.route('/settings')
+@login_required
+def settings():
+    return render_template('settings.html', user=current_user)
+
+@views.route('/')
+def landing():
+    return render_template('landing_page.html', user=current_user)
