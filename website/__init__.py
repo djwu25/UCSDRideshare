@@ -5,10 +5,14 @@ from flask_login import LoginManager
 db = SQLAlchemy()
 DB_NAME = "database.db"
 
+
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'MV'
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+    uri = "postgres://jfmaqiehglrlfk:093154589a89e72193d03bc4f5555c4fd4ecf4c4cad94d2679a8fd465b5e08ca@ec2-3-219-204-29.compute-1.amazonaws.com:5432/d2j7qjif9nmb98"
+    if uri and uri.startswith("postgres://"):
+        uri = uri.replace("postgres://", "postgresql://", 1)
+    app.config['SQLALCHEMY_DATABASE_URI'] = uri
     db.init_app(app)
 
     from .views import views
