@@ -1,5 +1,4 @@
 from website import create_app
-from os import environ
 
 app = create_app()
 
