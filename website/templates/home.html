@@ -54,7 +54,7 @@
 
 
 <h1 align="center">Rides</h1>
-<!--{% for user in db %}-->
+{% for user in data.session.query(User) %}
 {% for post in user.posts %}
 
 <br />
@@ -62,7 +62,7 @@
   <h5 class="card-header">{{ post.title }}</h5>
   <div class="card-body container fs-5">
     <div class="row">
-      <div class="col-2">HH:MM XM</div>
+      <div class="col-2">{{ post.time_of_departure }}</div>
       <div class="col-5">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +82,7 @@
         Departing from:
       </div>
       <div class="col">User: {{ user.first_name }}</div>
-      <div class="col">Seats available: #{{ post.seats_available }}</div>
+      <div class="col">Seats available: {{ post.seats_available }}</div>
     </div>
     <div class="row">
       <div class="col-2">
@@ -91,7 +91,6 @@
           width="24"
           height="24"
           fill="currentColor"
-          class="bi bi-arrow-down-short"
           viewBox="0 0 16 16"
         >
           <path
@@ -105,7 +104,7 @@
       <div class="col"></div>
     </div>
     <div class="row">
-      <div class="col-2">HH:MM XM</div>
+      <div class="col-2"></div>
       <div class="col-5"></div>
       <div class="col"></div>
       <div class="col"></div>
@@ -166,5 +165,5 @@
   </div>
 </div>
 {% endfor %} 
-<!--{% endfor %} -->
+{% endfor %}
 {% endblock %}

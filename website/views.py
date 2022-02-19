@@ -1,7 +1,7 @@
 from datetime import date
 from flask import Blueprint, render_template, request, flash, redirect, url_for, jsonify
 from flask_login import login_required, current_user
-from .models import Post
+from .models import Post, User
 from . import db
 import json
 
@@ -14,7 +14,7 @@ def landing():
 @views.route('/rides')
 @login_required
 def home():
-    return render_template('home.html', user=current_user, data=db)
+    return render_template('home.html', user=current_user, data=db, User=User)
 
 @views.route('/add-ride', methods=['GET', 'POST'])
 @login_required
