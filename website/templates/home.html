@@ -54,6 +54,7 @@
 
 
 <h1 align="center">Rides</h1>
+{% for user in db %}
 {% for post in user.posts %}
 
 <br />
@@ -81,7 +82,7 @@
         Departing from:
       </div>
       <div class="col">User: {{ user.first_name }}</div>
-      <div class="col">Seats available: #</div>
+      <div class="col">Seats available: #{{ post.seats_available }}</div>
     </div>
     <div class="row">
       <div class="col-2">
@@ -99,7 +100,7 @@
           />
         </svg>
       </div>
-      <div class="col-5 fw-lighter ml-4">City</div>
+      <div class="col-5 fw-lighter ml-4">{{ post.depart_from }}</div>
       <div class="col"></div>
       <div class="col"></div>
     </div>
@@ -130,11 +131,11 @@
         Arriving at:
       </div>
       <div class="col">Luggage space:</div>
-      <div class="col">Cost per seat:</div>
+      <div class="col">Cost per seat: ${{ post.seat_cost }}</div>
     </div>
     <div class="row">
       <div class="col-2"></div>
-      <div class="col-5 fw-lighter ml-4">City</div>
+      <div class="col-5 fw-lighter ml-4">{{ post.arrive_to }}</div>
       <div class="col"></div>
       <div class="col"></div>
     </div>
@@ -142,7 +143,7 @@
 
   <div class="card-footer">
     <div class="row fs-5">
-      <div class="col fw-light">Contact info:</div>
+      <div class="col fw-light">Contact info: {{ user.email }}</div>
       <div class="col" align="end">
         <button
           class="btn btn-link"
@@ -160,8 +161,10 @@
       </div>
     </div>
     <div class="collapse" id="collapseExample">
-      <div class="card card-body">{{ post.content }}</div>
+      <div class="card card-body">{{ post.extra_info }}</div>
     </div>
   </div>
 </div>
-{% endfor %} {% endblock %}
+{% endfor %} 
+{% endfor %} 
+{% endblock %}

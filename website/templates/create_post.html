@@ -7,8 +7,26 @@
     <h2>Ticket Title</h2>
     <input name="post_title" id="post_title" class="form-control" placeholder="Enter Ticket Title"></input>
     <br />
-    <h2>Description</h2>
-    <textarea type="text" name="post_description" id="post_description" class="form-control" placeholder="Enter Description"></textarea>
+    <h2>Departing From</h2>
+    <input name="post_depart_from" id="post_depart_from" class="form-control" placeholder="Enter Departure Location"></input>
+    <br />
+    <h2>Arriving To</h2>
+    <input name="post_arrive_to" id="post_arrive_to" class="form-control" placeholder="Enter Arrival Location"></input>
+    <br />
+    <h2>Seats Available (Minimum 1 Seat)</h2>
+    <input type="number" name="post_seats_available" id="post_seats_available" min="1" class="form-control" placeholder="Enter Amount of Seats"></input>
+    <br />
+    <h2>Seat Cost</h2>
+    <input type="number" name="post_seat_cost" id="post_seat_cost" class="form-control" placeholder="Enter Seat Cost"></input>
+    <br />
+    <h2>Time of Departure</h2>
+    <input type="time" name="post_time" id="post_time" class="form-control" placeholder="Enter Time"></input>
+    <br />
+    <h2>Date of Departure</h2>
+    <input type="date" name="post_date" id="post_date" class="form-control" placeholder="Enter Date"></input>
+    <br />
+    <h2>Extra Information</h2>
+    <textarea type="text" name="post_extra_info" id="post_extra_info" class="form-control" placeholder="Enter Any Extra Info"></textarea>
     <br />
     <div align="center">
         <button type="submit" class="btn btn-primary">Add Ride</button>
