@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UCSD RideShare</title>
+    <link rel="stylesheet" href="/static/main.css">
+
+</head>
+<body>
+    <div class="navbar">
+        <div class="container">
+            <a class="logo" href="/">UCSD<span>RideShare</span></a>
+            
+            <img id="mobile-cta" class="mobile-menu" src="images/menu.svg" alt="mobile_navigation">
+
+            <nav>
+                <img id="mobile-exit" class="mobile-menu" src="images/exit.svg" alt="Exit Button For Mob Nav">
+
+                <ul class="primary-nav">
+                    <li class="current"><a href="/">Home</a></li>
+                    <!--li><a href="#">TO UCSD</a></li-->
+                    <!--li><a href="#">FROM UCSD</a></li-->
+                </ul>
+                <ul class="secondary-nav">
+                    <li class="create"><a href="/sign-up">Create Account </a></li>
+                    <li class="signin"><a href="/login">Sign In </a></li>
+                    <li class="creators"><a href="#">Creators</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <section class="hero">
+        <div class="px-4 py-5 my-5 text-center">
+            <h1 class="display-5 fw-bold">UCSD RideShare</h1>
+            <div class="col-lg-6 mx-auto">
+              <p class="lead mb-5">Connect with other students. Find Rides and Give Rides.</p>
+              <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <li class="create"><a href="/sign-up">Create Account </a></li>
+                <li class="signin"><a href="/login">Sign In </a></li>
+              </div>
+            </div>
+          </div>
+            </div>
+        </div>
+    </section>
+    <section class="features-section">
+        <div class="container">
+           <!--- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3350.6847150295625!2d-117.23620218634565!3d32.88006038094091!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dc06c4414caf4f%3A0xefb6aafc89913ea7!2sUniversity%20of%20California%20San%20Diego!5e0!3m2!1sen!2sus!4v1644179959259!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe> -->
+        </div>
+    </section>
+    <script>
+        const mobileBtn = document.getElementById('mobile-cta')
+            nav = document.querySelector('nav')
+            mobileBtnExit = document.getElementById('mobile-exit')
+        mobileBtn.addEventListener('click', () => {
+            nav.classList.add('menu-btn');
+        })
+        mobileBtnExit.addEventListener('click', () => {
+            nav.classList.remove('menu-btn');
+        })
+        mobileBtn.addEventListener('click', () => {
+            nav.class
+        })
+    </script>
+</body>
+</html>

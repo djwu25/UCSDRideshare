@@ -6,6 +6,10 @@ import json
 
 views = Blueprint('views', __name__)
 
+@views.route('/')
+def landing():
+    return render_template('landingpage.html', user=current_user)
+
 @views.route('/rides')
 @login_required
 def home():
@@ -35,6 +39,7 @@ def add_ride():
 def settings():
     return render_template('settings.html', user=current_user)
 
-@views.route('/')
-def landing():
-    return render_template('landing_page.html', user=current_user)
+@views.route('/delete')
+@login_required
+def delete():
+    return render_template('delete.html', user=current_user)
