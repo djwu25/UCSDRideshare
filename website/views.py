@@ -35,13 +35,13 @@ def add_ride():
             flash('Please include location of departure.', category='error')
         elif len(arriveTo) < 1:
             flash('Please include arrival location.', category='error')
-        elif seatsAvailable is None:
+        elif seatsAvailable == "":
             flash('Please include the amount of available seats for this ride.', category='error')
-        elif seatCost is None:
+        elif seatCost == "":
             flash('Please include a seat cost.', category='error')
-        elif timeOfDeparture is None:
+        elif timeOfDeparture == "":
             flash('Please include a time of departure.', category='error')
-        elif dateOfDeparture is None:
+        elif dateOfDeparture == "":
             flash('Please include a date of departure.', category='error')
         else:
             new_post = Post(title=postTitle, user_id=current_user.id, depart_from=departFrom, arrive_to=arriveTo, 
