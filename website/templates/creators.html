@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UCSD RideShare</title>
+    <link rel="stylesheet" href="/static/creators.css">
+<body>
+    <div class="navbar">
+        <div class="container">
+            <a class="logo" href="/">UCSD<span>RideShare</span></a>
+            
+            <img id="mobile-cta" class="mobile-menu" src="/static/images/menu.svg" alt="mobile_navigation">
+
+            <nav>
+                <img id="mobile-exit" class="mobile-menu" src="/static/images/exit.svg" alt="Exit Button For Mob Nav">
+
+                <ul class="primary-nav">
+                    <li class="current"><a href="/">Home</a></li>
+                    <!--li><a href="#">TO UCSD</a></li-->
+                    <!--li><a href="#">FROM UCSD</a></li-->
+                </ul>
+                <ul class="secondary-nav">
+                    <li class="create"><a href="/sign-up">Create Account </a></li>
+                    <li class="signin"><a href="/login">Sign In </a></li>
+                    <li class="creators"><a href="/creators">Creators</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+          <div class="card">
+            <img src="/static/images/brandonle.jpeg" alt="Brandon" style="width:100%">
+            <div class="container">
+              <h2>Brandon Le</h2>
+              <p class="title">Front-End Developer</p>
+              <p></p>
+              <p>bele@ucsd.edu</p>
+            </div>
+          </div>
+        </div>
+      
+        <div class="column">
+          <div class="card">
+            <img src="/static/images/davidmin.jpeg" alt="David" style="width:100%">
+            <div class="container">
+              <h2>David Min</h2>
+              <p class="title">Front-End Developer</p>
+              <p></p>
+              <p>dmin@ucsd.edu</p>
+            </div>
+          </div>
+        </div>
+      
+        <div class="column">
+          <div class="card">
+            <img src="/static/images/nate.jpeg" alt="Nate" style="width:100%">
+            <div class="container">
+              <h2>Nathaniel Nguyen</h2>
+              <p class="title">Front-End / UI</p>
+              <p></p>
+              <p>ndnguyen@ucsd.edu</p>
+            </div>
+          </div>
+        </div>
+      
+        <div class="column">
+            <div class="card">
+              <img src="/static/images/akshatlal.jpeg" alt="Akshat" style="width:100%">
+              <div class="container">
+                <h2>Akshat Lal</h2>
+                <p class="title">Back-End Developer</p>
+                <p></p>
+                <p>alal@ucsd.edu</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="card">
+              <img src="/static/images/dukewu.jpeg" alt="Duke" style="width:100%">
+              <div class="container">
+                <h2>Duke Wu</h2>
+                <p class="title">Back-End Developer</p>
+                <p></p>
+                <p>d3wu@ucsd.edu</p>
+              </div>
+            </div>
+          </div>
+          <script>
+            const mobileBtn = document.getElementById('mobile-cta')
+                nav = document.querySelector('nav')
+                mobileBtnExit = document.getElementById('mobile-exit')
+            mobileBtn.addEventListener('click', () => {
+                nav.classList.add('menu-btn');
+            })
+            mobileBtnExit.addEventListener('click', () => {
+                nav.classList.remove('menu-btn');
+            })
+            mobileBtn.addEventListener('click', () => {
+                nav.class
+            })
+        </script>
+</body>
