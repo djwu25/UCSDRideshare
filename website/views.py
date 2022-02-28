@@ -9,6 +9,8 @@ views = Blueprint('views', __name__)
 
 @views.route('/')
 def landing():
+    if current_user.is_authenticated: 
+        return redirect(url_for('views.home'))
     return render_template('landingpage.html', user=current_user)
 
 @views.route('/creators')
