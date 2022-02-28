@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, datetime
 from flask import Blueprint, render_template, request, flash, redirect, url_for, jsonify
 from flask_login import login_required, current_user
 from .models import Post, User
@@ -20,7 +20,7 @@ def creators():
 @views.route('/rides')
 @login_required
 def home():
-    return render_template('home.html', user=current_user, data=db, User=User)
+    return render_template('home.html', user=current_user, data=db, User=User, datetime=datetime)
 
 @views.route('/add-ride', methods=['GET', 'POST'])
 @login_required
@@ -64,7 +64,10 @@ def add_ride():
 def settings():
     return render_template('settings.html', user=current_user)
 
-@views.route('/delete')
+@views.route('/delete/<int:post_id>', methods=['POST'])
 @login_required
 def delete():
-    return render_template('delete.html', user=current_user)
+    #current_post = db.session.query.get_or_404(post_id)
+    #db.session.delete(current_post)
+    #db.session.commit()
+    return redirect(url_for('views.home'))

@@ -62,7 +62,7 @@
   <h5 class="card-header">{{ post.title }}</h5>
   <div class="card-body container fs-5">
     <div class="row">
-      <div class="col-2">{{ post.time_of_departure }}</div>
+      <div class="col-2">{{ post.date_of_departure.strftime("%m-%d-%Y") }}</div>
       <div class="col-5">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -93,10 +93,6 @@
           fill="currentColor"
           viewBox="0 0 16 16"
         >
-          <path
-            fill-rule="evenodd"
-            d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"
-          />
         </svg>
       </div>
       <div class="col-5 fw-lighter ml-4">{{ post.depart_from }}</div>
@@ -110,7 +106,7 @@
       <div class="col"></div>
     </div>
     <div class="row">
-      <div class="col-2"></div>
+      <div class="col-2">{{ post.time_of_departure.strftime("%I:%M %p") }}</div>
       <div class="col-5">
         <svg
           xmlns="http://www.w3.org/2000/svg"
