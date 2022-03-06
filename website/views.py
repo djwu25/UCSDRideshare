@@ -64,10 +64,28 @@ def add_ride():
 def settings():
     return render_template('settings.html', user=current_user)
 
-@views.route('/delete/<int:post_id>', methods=['POST'])
+@views.route('/delete/<int:post_id>', methods=['GET', 'POST'])
 @login_required
-def delete():
-    #current_post = db.session.query.get_or_404(post_id)
-    #db.session.delete(current_post)
-    #db.session.commit()
-    return redirect(url_for('views.home'))
+def delete_post(post_id):
+    current_post = Post.query.get(post_id)
+    if current_post:
+        db.session.delete(current_post)
+        db.session.commit()
+        flash('Deleted Ticket', category='success' )
+        return redirect(url_for('views.home'))
+    else:
+        flash('Could not delete post', category='error')
+        return redirect(url_for('views.home'))
+
+@views.route('/update/<int:post_id>', methods=['GET','POST'])
+@login_required
+def update(post_id):
+    current_post = db.session.query.get_or_404(post_id)
+    if request.method == "POST":
+        # Add all the updated stuff
+        db.session.commit()
+        flash('Updated Ticket', category='success' )
+        return redirect(url_for('views.home'))
+    else:
+        # Render update page
+        return render_template()
