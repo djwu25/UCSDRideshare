@@ -20,7 +20,7 @@ def creators():
 @views.route('/rides')
 @login_required
 def home():
-    return render_template('home.html', user=current_user, data=db, User=User, datetime=datetime)
+    return render_template('home.html', user=current_user, data=db, User=User, current_user=current_user)
 
 @views.route('/add-ride', methods=['GET', 'POST'])
 @login_required

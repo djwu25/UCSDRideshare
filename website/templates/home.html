@@ -59,7 +59,20 @@
 
 <br />
 <div class="card">
-  <h5 class="card-header">{{ post.title }}</h5>
+  <div class="card-header">
+    <div class="row fs-5">
+      <div class="col">{{ post.title }}</div>
+      <div class="col" align="end">
+        {% if user.id == current_user.id %}
+        <a href="/delete/{{post.id}}" class="btn btn-outline-danger btn-sm" >Delete</a>
+        <a href="/update/{{post.id}}" class="btn btn-outline-secondary btn-sm" >Update</a>
+        {% endif %}
+      </div>
+    </div>
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body">{{ post.extra_info }}</div>
+    </div>
+  </div>
   <div class="card-body container fs-5">
     <div class="row">
       <div class="col-2">{{ post.date_of_departure.strftime("%m-%d-%Y") }}</div>
@@ -152,8 +165,6 @@
       </div>
       <div class="col-2" align="end">
         <button class="btn btn-primary" type="button">Reserve a Seat</button>
-        <a href="/delete/{{post.id}}" class="btn btn-outline-danger btn-sm" >Delete</a>
-        <a href="/update/{{post.id}}" class="btn btn-outline-secondary btn-sm" >Update</a>
       </div>
     </div>
     <div class="collapse" id="collapseExample">
