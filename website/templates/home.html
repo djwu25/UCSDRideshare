@@ -1,61 +1,106 @@
 {% extends "base.html" %} {% block title%}Rides{% endblock %} {% block content%}
 <br />
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button
+  type="button"
+  class="btn btn-primary"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal"
+>
   Add Ride(temp)
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">New Ticket</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
-          <h1 align="center">Add a New Ride</h1>
+        <h1 align="center">Add a New Ride</h1>
+        <br />
+        <form method="POST">
+          <h2>Ticket Title</h2>
+          <input
+            name="post_title"
+            id="post_title"
+            class="form-control"
+            placeholder="Enter Ticket Title"
+          />
           <br />
-          <form method="POST">
-              <h2>Ticket Title</h2>
-              <input name="post_title" id="post_title" class="form-control" placeholder="Enter Ticket Title">
-              <br />
-          
-              <h2> Leaving or Arriving to Campus </h2>
-              <select name="to_or_from">
-                <option value = "Leaving Campus"> Leaving Campus </option>
-                <option value = "Entering Campus"> Entering Campus </option>
-              </select>
-          
-              <h2>Date & Time</h2>
-              <input type = "datetime-local" name="date" id="post_date" class="form-control" >
-          
-              <h2> Destination </h2>
-              <input name="destination" id="post_destination" class="form-control" placeholder="Enter Ride Destination">
-          
-              <h2> Number of Seats </h2>
-              <input type = "number" name="seat_number" id="post_seatnum" class="form-control" value = "1" min = "1" max = "10">
-          
-              <h2>Description</h2>
-              <textarea type="text" name="post_description" id="post_description" class="form-control" placeholder="Enter Description"></textarea>
-          
-              <br />
-              <!--<div align="center">
+
+          <h2>Leaving or Arriving to Campus</h2>
+          <select name="to_or_from">
+            <option value="Leaving Campus">Leaving Campus</option>
+            <option value="Entering Campus">Entering Campus</option>
+          </select>
+
+          <h2>Date & Time</h2>
+          <input
+            type="datetime-local"
+            name="date"
+            id="post_date"
+            class="form-control"
+          />
+
+          <h2>Destination</h2>
+          <input
+            name="destination"
+            id="post_destination"
+            class="form-control"
+            placeholder="Enter Ride Destination"
+          />
+
+          <h2>Number of Seats</h2>
+          <input
+            type="number"
+            name="seat_number"
+            id="post_seatnum"
+            class="form-control"
+            value="1"
+            min="1"
+            max="10"
+          />
+
+          <h2>Description</h2>
+          <textarea
+            type="text"
+            name="post_description"
+            id="post_description"
+            class="form-control"
+            placeholder="Enter Description"
+          ></textarea>
+
+          <br />
+          <!--<div align="center">
                   <button type="submit" class="btn btn-primary">Add Ride</button>
               </div>-->
-          </form>
+        </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
         <button type="button" class="btn btn-primary">Add Ride</button>
       </div>
     </div>
   </div>
 </div>
 
-
 <h1 align="center">Rides</h1>
-{% for user in data.session.query(User) %}
-{% for post in user.posts %}
+{% for user in data.session.query(User) %} {% for post in user.posts %}
 
 <br />
 <div class="card">
@@ -64,8 +109,12 @@
       <div class="col">{{ post.title }}</div>
       <div class="col" align="end">
         {% if user.id == current_user.id %}
-        <a href="/delete/{{post.id}}" class="btn btn-outline-danger btn-sm" >Delete</a>
-        <a href="/update/{{post.id}}" class="btn btn-outline-secondary btn-sm" >Update</a>
+        <a href="/delete/{{post.id}}" class="btn btn-outline-danger btn-sm"
+          >Delete</a
+        >
+        <a href="/update/{{post.id}}" class="btn btn-outline-secondary btn-sm"
+          >Update</a
+        >
         {% endif %}
       </div>
     </div>
@@ -105,8 +154,7 @@
           height="24"
           fill="currentColor"
           viewBox="0 0 16 16"
-        >
-        </svg>
+        ></svg>
       </div>
       <div class="col-5 fw-lighter ml-4">{{ post.depart_from }}</div>
       <div class="col"></div>
@@ -156,23 +204,22 @@
           class="btn btn-link"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#collapseExample"
+          data-bs-target="#a{{post.id}}"
           aria-expanded="false"
-          aria-controls="collapseExample"
+          aria-controls="a{{post.id}}"
         >
-          More information
+          More Information
         </button>
       </div>
       <div class="col-2" align="end">
         <button class="btn btn-primary" type="button">Reserve a Seat</button>
       </div>
     </div>
-    <div class="collapse" id="collapseExample">
+    <div class="collapse" id="a{{post.id}}">
       <div class="card card-body">{{ post.extra_info }}</div>
     </div>
   </div>
 </div>
-{% endfor %} 
-{% endfor %}
+{% endfor %} {% endfor %}
 <br />
 {% endblock %}
