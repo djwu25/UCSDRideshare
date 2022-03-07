@@ -90,14 +90,50 @@ def update(post_id):
     post_to_update = Post.query.get_or_404(post_id)
     if request.method == "POST":
         # Add all the updated stuff
-        post_to_update.title = request.form['post_title']
-        post_to_update.depart_from = request.form['post_depart_from']
-        post_to_update.arrive_to = request.form['post_arrive_to']
-        post_to_update.seats_available = request.form['post_seats_available']
-        post_to_update.seat_cost = request.form['post_seat_cost']
-        post_to_update.time_of_departure = request.form['post_time']
-        post_to_update.date_of_departure = request.form['post_date']
-        post_to_update.extra_info = request.form['post_extra_info']
+        postTitle = request.form['post_title']
+        departFrom = request.form['post_depart_from']
+        arriveTo = request.form['post_arrive_to']
+        seatsAvailable = request.form['post_seats_available']
+        seatCost = request.form['post_seat_cost']
+        timeOfDeparture = request.form['post_time']
+        dateOfDeparture = request.form['post_date']
+        checkDate = datetime.strptime(dateOfDeparture, '%Y-%m-%d')
+        extraInfo = request.form['post_extra_info']
+
+        if len(postTitle) < 1:
+            flash('Please include a title for the ride.', category='error')
+            return render_template('update_post.html', post_to_update=post_to_update, user=current_user)
+        elif len(departFrom) < 1:
+            flash('Please include location of departure.', category='error')
+            return render_template('update_post.html', post_to_update=post_to_update, user=current_user)
+        elif len(arriveTo) < 1:
+            flash('Please include arrival location.', category='error')
+            return render_template('update_post.html', post_to_update=post_to_update, user=current_user)
+        elif seatsAvailable == "":
+            flash('Please include the amount of available seats for this ride.', category='error')
+            return render_template('update_post.html', post_to_update=post_to_update, user=current_user)
+        elif seatCost == "":
+            flash('Please include a seat cost.', category='error')
+            return render_template('update_post.html', post_to_update=post_to_update, user=current_user)
+        elif timeOfDeparture == "":
+            flash('Please include a time of departure.', category='error')
+            return render_template('update_post.html', post_to_update=post_to_update, user=current_user)
+        elif dateOfDeparture == "":
+            flash('Please include a date of departure.', category='error')
+            return render_template('update_post.html', post_to_update=post_to_update, user=current_user)
+        elif checkDate <= datetime.today():
+            flash('Please insert a date that past today\'s date', category='error')
+            return render_template('update_post.html', post_to_update=post_to_update, user=current_user)
+        else:
+            post_to_update.title = postTitle
+            post_to_update.depart_from = departFrom
+            post_to_update.arrive_to = arriveTo
+            post_to_update.seats_available = seatsAvailable
+            post_to_update.seat_cost = seatCost
+            post_to_update.time_of_departure = timeOfDeparture
+            post_to_update.date_of_departure = dateOfDeparture
+            post_to_update.extra_info = extraInfo
+
         try:
             db.session.commit()
             flash('Updated Ticket', category='success' )
