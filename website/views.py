@@ -87,12 +87,23 @@ def delete_post(post_id):
 @views.route('/update/<int:post_id>', methods=['GET','POST'])
 @login_required
 def update(post_id):
-    current_post = db.session.query.get_or_404(post_id)
+    post_to_update = Post.query.get_or_404(post_id)
     if request.method == "POST":
         # Add all the updated stuff
-        db.session.commit()
-        flash('Updated Ticket', category='success' )
-        return redirect(url_for('views.home'))
+        post_to_update.title = request.form['post_title']
+        post_to_update.depart_from = request.form['post_depart_from']
+        post_to_update.arrive_to = request.form['post_arrive_to']
+        post_to_update.seats_available = request.form['post_seats_available']
+        post_to_update.seat_cost = request.form['post_seat_cost']
+        post_to_update.time_of_departure = request.form['post_time']
+        post_to_update.date_of_departure = request.form['post_date']
+        post_to_update.extra_info = request.form['post_extra_info']
+        try:
+            db.session.commit()
+            flash('Updated Ticket', category='success' )
+            return redirect(url_for('views.home'))
+        except:
+            flash('Error Updating Ride', category='error' )
     else:
         # Render update page
-        return render_template()
+        return render_template('update_post.html', post_to_update=post_to_update, user=current_user)

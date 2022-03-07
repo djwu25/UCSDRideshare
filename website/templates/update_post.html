@@ -1,0 +1,36 @@
+{% extends "base.html" %} {% block title%}Update a Ride{% endblock %}
+{% block content%}
+<br />
+<h1 align="center">Update a Ride</h1>
+<br />
+<form action="/update/{{post_to_update.id}}" method="POST">
+    <h2>Ticket Title</h2>
+    <input name="post_title" id="post_title" class="form-control" placeholder="Enter Ticket Title" value="{{post_to_update.title}}"></input>
+    <br />
+    <h2>Departing From</h2>
+    <input name="post_depart_from" id="post_depart_from" class="form-control" placeholder="Enter Departure Location" value="{{post_to_update.depart_from}}"></input>
+    <br />
+    <h2>Arriving To</h2>
+    <input name="post_arrive_to" id="post_arrive_to" class="form-control" placeholder="Enter Arrival Location" value="{{post_to_update.arrive_to}}"></input>
+    <br />
+    <h2>Seats Available (Minimum 1 Seat)</h2>
+    <input type="number" name="post_seats_available" id="post_seats_available" min="1" class="form-control" placeholder="Enter Amount of Seats" value="{{post_to_update.seats_available}}"></input>
+    <br />
+    <h2>Seat Cost</h2>
+    <input type="number" name="post_seat_cost" id="post_seat_cost" class="form-control" placeholder="Enter Seat Cost" value="{{post_to_update.seat_cost}}"></input>
+    <br />
+    <h2>Time of Departure</h2>
+    <input type="time" name="post_time" id="post_time" class="form-control" placeholder="Enter Time" value="{{post_to_update.time_of_departure}}"></input>
+    <br />
+    <h2>Date of Departure</h2>
+    <input type="date" name="post_date" id="post_date" class="form-control" placeholder="Enter Date" value="{{post_to_update.date_of_departure}}"></input>
+    <br />
+    <h2>Extra Information</h2>
+    <textarea type="text" name="post_extra_info" id="post_extra_info" class="form-control" placeholder="Enter Any Extra Info" value="{{post_to_update.extra_info}}"></textarea>
+    <br />
+    <div align="center">
+        <button type="submit" class="btn btn-primary">Add Ride</button>
+    </div>
+</form>
+<br />
+{% endblock %}
