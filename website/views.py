@@ -3,6 +3,7 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for,
 from flask_login import login_required, current_user
 from .models import Post, User
 from . import db
+from sqlalchemy import delete
 import json
 
 views = Blueprint('views', __name__)
@@ -20,6 +21,9 @@ def creators():
 @views.route('/rides')
 @login_required
 def home():
+    delete_old_dates = delete(Post).where(Post.date_of_departure < datetime.today())
+    db.session.execute(delete_old_dates)
+    db.session.commit()
     return render_template('home.html', user=current_user, data=db, User=User, current_user=current_user)
 
 @views.route('/add-ride', methods=['GET', 'POST'])
@@ -34,6 +38,7 @@ def add_ride():
         timeOfDeparture = request.form['post_time']
         dateOfDeparture = request.form['post_date']
         extraInfo = request.form['post_extra_info']
+        checkDate = datetime.strptime(dateOfDeparture, '%Y-%m-%d')
 
         if len(postTitle) < 1:
             flash('Please include a title for the ride.', category='error')
@@ -49,6 +54,8 @@ def add_ride():
             flash('Please include a time of departure.', category='error')
         elif dateOfDeparture == "":
             flash('Please include a date of departure.', category='error')
+        elif checkDate <= datetime.today():
+            flash('Please insert a date that past today\'s date', category='error')
         else:
             new_post = Post(title=postTitle, user_id=current_user.id, depart_from=departFrom, arrive_to=arriveTo, 
                 seats_available=seatsAvailable, seat_cost=seatCost, time_of_departure=timeOfDeparture,
